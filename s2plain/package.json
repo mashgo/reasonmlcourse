@@ -2,9 +2,10 @@
   "name": "s2playway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "1_function.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel --presets env -d public/ src/"
   },
   "keywords": [],
   "author": "",
