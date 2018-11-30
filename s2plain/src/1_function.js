@@ -17,25 +17,27 @@ class Discount {
     applyDiscount(cart) {
         let totalPrice = cart.totalPrice;
         cart.netPrice = totalPrice;
+        let discount = 1.;
         if(cart.cartItems.length >= 2&&  totalPrice >= 100) {
-            cart.netPrice = totalPrice - totalPrice * 0.1;
+            discount = 0.1;
         }
 
         // assume that PoS person can give additional 5% based on customer
         // this is accessed directly from form input field
         const counterDiscount = 0.05; // 5%
-        cart.netPrice = totalPrice - totalPrice * counterDiscount;
+        cart.netPrice = totalPrice - totalPrice * (discount + counterDiscount);
     }
 
     applyDiscount_outputSideEffect(cart) {
         let totalPrice = cart.totalPrice;
         let netPrice = totalPrice;
+        let discount = 1.;
         if(cart.cartItems.length >= 2&&  totalPrice >= 100) {
-            netPrice = totalPrice - totalPrice * 0.1;
+            discount = 0.1;
         }
         
         const counterDiscount = 0.05; // 5%
-        netPrice = totalPrice - totalPrice * counterDiscount;
+        netPrice = totalPrice - totalPrice * (discount + counterDiscount);
 
         console.log(netPrice); // assume that this is directly writing to display field.
     }

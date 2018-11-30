@@ -10,15 +10,14 @@ function addItem(cart, item) {
         ];
 }
 
-function calculateDiscount(cart) {
+function calculateDiscount(cart, counterDiscount) {
   var folder = function (acc, item) {
     return acc + item[/* unitPrice */2] * item[/* quantity */4];
   };
   var totalPrice = List.fold_left(folder, 0, cart);
-  console.log(totalPrice);
   var match = List.length(cart) >= 2 && totalPrice >= 100;
   var discount = match ? 0.1 : 1;
-  return totalPrice - totalPrice * discount * 0.05;
+  return totalPrice - totalPrice * (discount + counterDiscount);
 }
 
 var cart = /* :: */[
@@ -41,9 +40,36 @@ var cart = /* :: */[
   ]
 ];
 
-console.log(calculateDiscount(cart));
+var cart2_000 = /* record */[
+  /* productId */"B5",
+  /* title */"Web Principles",
+  /* unitPrice */18.00,
+  /* currency */"USD",
+  /* quantity */8
+];
+
+var cart2_001 = /* :: */[
+  /* record */[
+    /* productId */"B4",
+    /* title */"Web UX",
+    /* unitPrice */12.00,
+    /* currency */"USD",
+    /* quantity */3
+  ],
+  /* [] */0
+];
+
+var cart2 = /* :: */[
+  cart2_000,
+  cart2_001
+];
+
+console.log(calculateDiscount(cart, 0.05));
+
+console.log(calculateDiscount(cart2, 0.05));
 
 exports.addItem = addItem;
 exports.calculateDiscount = calculateDiscount;
 exports.cart = cart;
+exports.cart2 = cart2;
 /*  Not a pure module */

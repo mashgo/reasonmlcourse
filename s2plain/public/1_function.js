@@ -35,26 +35,28 @@ var Discount = function () {
         value: function applyDiscount(cart) {
             var totalPrice = cart.totalPrice;
             cart.netPrice = totalPrice;
+            var discount = 1.;
             if (cart.cartItems.length >= 2 && totalPrice >= 100) {
-                cart.netPrice = totalPrice - totalPrice * 0.1;
+                discount = 0.1;
             }
 
             // assume that PoS person can give additional 5% based on customer
             // this is accessed directly from form input field
             var counterDiscount = 0.05; // 5%
-            cart.netPrice = totalPrice - totalPrice * counterDiscount;
+            cart.netPrice = totalPrice - totalPrice * (discount + counterDiscount);
         }
     }, {
         key: "applyDiscount_outputSideEffect",
         value: function applyDiscount_outputSideEffect(cart) {
             var totalPrice = cart.totalPrice;
             var netPrice = totalPrice;
+            var discount = 1.;
             if (cart.cartItems.length >= 2 && totalPrice >= 100) {
-                netPrice = totalPrice - totalPrice * 0.1;
+                discount = 0.1;
             }
 
             var counterDiscount = 0.05; // 5%
-            netPrice = totalPrice - totalPrice * counterDiscount;
+            netPrice = totalPrice - totalPrice * (discount + counterDiscount);
 
             console.log(netPrice); // assume that this is directly writing to display field.
         }
