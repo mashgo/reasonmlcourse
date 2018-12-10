@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +17,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 
 .App-link {
   color: #61dafb;
@@ -30,7 +31,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 #slidecaption {
   -webkit-animation-name: spinner; 
@@ -103,4 +103,11 @@
 
 .menu ul li a.active {
   background-color: #4CAF50;
+}
+
+.log{
+  color: white;
+  height: 200px;
+  min-width: 50%;
+  padding: 10px;
 }
