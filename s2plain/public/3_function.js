@@ -9,29 +9,26 @@ var Cart = function () {
         _classCallCheck(this, Cart);
 
         this.cartItems = [];
-        this.totalPrice = 0.0;
     }
 
-    /* Multiple responsibility */
+    /* Single responsibility */
 
 
     _createClass(Cart, [{
-        key: "addItem_notpure",
-        value: function addItem_notpure(item) {
-            // function doing multiple responsibility
-            // add items to the cart list
-            this.cartItems.push(item);
-            var itemPrice = item.Quantity * item.UnitPrice;
-            // calculate the price
-            this.totalPrice += itemPrice;
-        }
-
-        /* Single responsibility */
-
-    }, {
         key: "addItem",
         value: function addItem(item) {
             this.cartItems.push(item);
+        }
+    }, {
+        key: "updateItem",
+        value: function updateItem(itemId, quantity) {
+            // 1. Condition to check whether item already exists
+            this.cartItems.forEach(function (i) {
+                if (i.ProductId == itemId) {
+                    // 2. Update the item with new quantity
+                    i.Quantity = quantity; // mutating
+                }
+            });
         }
     }, {
         key: "getTotalPrice",
@@ -48,14 +45,13 @@ var Cart = function () {
 }();
 
 var cart = new Cart();
-cart.addItem_notpure({
+cart.addItem({
     "ProductId": "Book-4",
     "Title": "Web UX",
     "UnitPrice": 12.00,
     "Currency": "USD",
     "Quantity": 3
 });
-console.log(cart.totalPrice);
 
 cart.addItem({
     "ProductId": "Book-5",
@@ -64,5 +60,9 @@ cart.addItem({
     "Currency": "USD",
     "Quantity": 8
 });
+
+console.log(cart.getTotalPrice());
+
+cart.updateItem("Book-4", 14);
 
 console.log(cart.getTotalPrice());
