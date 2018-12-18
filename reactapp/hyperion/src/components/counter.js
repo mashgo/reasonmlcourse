@@ -1,13 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as userActions from './actions';
 
 class Counter extends React.Component {
-    increment = () => {
-        this.props.dispatch({ type: 'INCREMENT' });
+    constructor(props) {
+        super(props);
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
     }
 
-    decrement = () => {
-        this.props.dispatch({ type: 'DECREMENT' });
+    increment() {
+        this.props.userActions.incrementValue();
+    }
+
+    decrement() {
+        this.props.userActions.decrementValue();
     }
 
     render() {
@@ -32,4 +40,10 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Counter);
+function mapDispatchToProps(dispatch) {
+    return {
+        userActions: bindActionCreators(userActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

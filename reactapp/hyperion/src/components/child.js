@@ -4,7 +4,8 @@ class Child extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            time: ""
+            time: "",
+            canStart : false
         }
     }
     componentWillUpdate() {
@@ -22,6 +23,7 @@ class Child extends Component {
 
     componentWillUnmount() {
         console.log("Component Will Unmount");
+        clearInterval(timer);        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -41,7 +43,7 @@ class Child extends Component {
     }
 
     componentWillMount() {
-        clearInterval(timer);
+
         console.log("Component Will Mount");
     }
 
