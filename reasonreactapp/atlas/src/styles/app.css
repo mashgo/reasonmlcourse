@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+#slidecaption {
+  -webkit-animation-name: spinner; 
+ -webkit-animation-timing-function: linear; 
+ -webkit-animation-iteration-count: infinite; 
+ -webkit-animation-duration: 4s; 
+ animation-name: spinner; 
+ animation-timing-function: linear; 
+ animation-iteration-count: infinite; 
+ animation-duration: 4s; 
+ -webkit-transform-style: preserve-3d; 
+ -moz-transform-style: preserve-3d; 
+ -ms-transform-style: preserve-3d; 
+ transform-style: preserve-3d;
+ height: 40vmin;
+}
+
+/* WebKit and Opera browsers */ @-webkit-keyframes spinner { 
+ from 
+ { 
+     -webkit-transform: rotateY(0deg); 
+ } 
+ to { 
+     -webkit-transform: rotateY(-360deg); 
+ } 
+} /* all other browsers */ 
+@keyframes spinner { 
+ from { 
+     -moz-transform: rotateY(0deg); 
+     -ms-transform: rotateY(0deg); 
+     transform: rotateY(0deg); 
+ } 
+ to 
+ { 
+     -moz-transform: rotateY(-360deg); 
+     -ms-transform: rotateY(-360deg); 
+     transform: rotateY(-360deg); 
+ 
+ } 
+}
+
+.menu{
+  position: absolute;
+  z-index: 1;
+  width:100%;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.menu ul li {
+  float: left;
+}
+
+.menu ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu ul li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.menu ul li a.active {
+  background-color: #4CAF50;
+}

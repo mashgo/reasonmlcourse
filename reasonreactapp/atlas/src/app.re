@@ -1,39 +1,52 @@
-[%bs.raw {|require('./app.css')|}];
+[%bs.raw {|require('./styles/app.css')|}];
 
-[@bs.module] external logo: string = "./logo.svg";
+type state = {route: string};
 
-let component = ReasonReact.statelessComponent("App");
+let component = ReasonReact.reducerComponent("App");
 
-let make = (~message, _children) => {
+let make = _children => {
   ...component,
+  reducer: (action, state) =>
+    switch (action) {
+    | "first-component" =>
+      ReasonReact.Update({...state, route: "first-component"})
+    | "state" => ReasonReact.Update({...state, route: "state"})
+    | "lifecycle" => ReasonReact.Update({...state, route: "lifecycle"})
+    | "actions" => ReasonReact.Update({...state, route: "actions"})
+    | "routes" => ReasonReact.Update({...state, route: "routes"})
+    },
+  initialState: () => {route: "first-component"},
+  didMount: self => {
+    let watcherID =
+      ReasonReact.Router.watchUrl(url =>
+        switch (url.path) {
+        | [] => self.send("")
+        | ["first-component"] => self.send("first-component")
+        | ["state"] => self.send("state")
+        | ["lifecycle"] => self.send("lifecycle")
+        | ["actions"] => self.send("actions")
+        | ["routes"] => self.send("routes")
+        | _ => self.send("state")
+        }
+      );
+    self.onUnmount(() => ReasonReact.Router.unwatchUrl(watcherID));
+  },
   render: _self =>
     <div className="App">
-      <div className="menu">
-        <ul>
-          <li>
-            <a className="active" href="#component">
-              {ReasonReact.string("First Component")}
-            </a>
-          </li>
-          <li>
-            <a href="#state"> {ReasonReact.string("State & Props")} </a>
-          </li>
-          <li>
-            <a href="#lifecycle">
-              {ReasonReact.string("Component Life Cycle")}
-            </a>
-          </li>
-          <li>
-            <a href="#actions"> {ReasonReact.string("Actions & Reducers")} </a>
-          </li>
-          <li>
-            <a href="#routes"> {ReasonReact.string("Routing Mechanism")} </a>
-          </li>
-        </ul>
-      </div>
-      <div className="App-header">
-        <img src=logo id="slidecaption" alt="logo" />
-        <h2> {ReasonReact.string(message)} </h2>
+      <Menu />
+      <div>
+        {
+          Js.log(_self.state.route);
+          switch (_self.state.route) {
+          | "first-component" =>
+            <FirstComponent message="Welcome to Reason React" />
+          | "state" => <StateAndProps />
+          | "lifecycle" => <Menu />
+          | "actions" => <Menu />
+          | "routes" => <Menu />
+          | _ => <StateAndProps />
+          }
+        }
       </div>
     </div>,
 };

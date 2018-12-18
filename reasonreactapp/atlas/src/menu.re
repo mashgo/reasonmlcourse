@@ -1,13 +1,32 @@
 let component = ReasonReact.statelessComponent("Menu");
-
-let handleClick = (href, event) =>
-  /* the default action will reload the page, which will cause us to lose state */
-  if (! ReactEventRe.Mouse.defaultPrevented(event)) {
-    ReactEventRe.Mouse.preventDefault(event);
-    ReasonReact.Router.push(href)
-  };
-
-let make = (~href, children) => {
+let make = _children => {
   ...component,
-  render: (_self) => ReasonReact.createDomElement("a", ~props={"href": href, "onClick": handleClick(href)}, children)
+  render: _self =>
+    <div className="menu">
+      <ul>
+        <li>
+          <Link href="first-component">
+            {ReasonReact.string("First Component")}
+          </Link>
+        </li>
+        <li>
+          <Link href="state"> {ReasonReact.string("State & Props")} </Link>
+        </li>
+        <li>
+          <Link href="lifecycle">
+            {ReasonReact.string("Component Life Cycle")}
+          </Link>
+        </li>
+        <li>
+          <Link href="actions">
+            {ReasonReact.string("Actions & Reducers")}
+          </Link>
+        </li>
+        <li>
+          <Link href="routes">
+            {ReasonReact.string("Routing Mechanism")}
+          </Link>
+        </li>
+      </ul>
+    </div>,
 };
