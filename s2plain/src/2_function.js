@@ -31,8 +31,8 @@ class Cart {
 const cart = new Cart();
 cart.addItem_notpure({
     "ProductId" : "Book-4",
-    "Title" : "Web UX",
-    "UnitPrice": 12.00,
+    "Title" : "The Silk Roads: A New History of the World",
+    "UnitPrice": 13.59,
     "Currency": "USD",
     "Quantity": 3
 });
@@ -41,8 +41,8 @@ console.log(cart.totalPrice);
 const cart2 = new Cart();
 cart2.addItem({
     "ProductId" : "Book-4",
-    "Title" : "Web UX",
-    "UnitPrice": 12.00,
+    "Title" : "Measure What Matters",
+    "UnitPrice": 14.99,
     "Currency": "USD",
     "Quantity": 3
 });

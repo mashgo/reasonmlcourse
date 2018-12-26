@@ -47,16 +47,16 @@ var Cart = function () {
 var cart = new Cart();
 cart.addItem({
     "ProductId": "Book-4",
-    "Title": "Web UX",
-    "UnitPrice": 12.00,
+    "Title": "The Silk Roads: A New History of the World",
+    "UnitPrice": 13.59,
     "Currency": "USD",
     "Quantity": 3
 });
 
 cart.addItem({
     "ProductId": "Book-5",
-    "Title": "Web Principles",
-    "UnitPrice": 18.00,
+    "Title": "Measure What Matters",
+    "UnitPrice": 14.99,
     "Currency": "USD",
     "Quantity": 8
 });

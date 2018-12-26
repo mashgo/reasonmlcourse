@@ -23,16 +23,16 @@ function calculateDiscount(cart, counterDiscount) {
 var cart = /* :: */[
   /* record */[
     /* productId */"B4",
-    /* title */"Web UX",
-    /* unitPrice */12.00,
+    /* title */"The Silk Roads: A New History of the World",
+    /* unitPrice */13.59,
     /* currency */"USD",
     /* quantity */3
   ],
   /* :: */[
     /* record */[
       /* productId */"B5",
-      /* title */"Web Principles",
-      /* unitPrice */18.00,
+      /* title */"Measure What Matters",
+      /* unitPrice */14.99,
       /* currency */"USD",
       /* quantity */8
     ],
@@ -42,8 +42,8 @@ var cart = /* :: */[
 
 var cart2_000 = /* record */[
   /* productId */"B5",
-  /* title */"Web Principles",
-  /* unitPrice */18.00,
+  /* title */"Measure What Matters",
+  /* unitPrice */14.99,
   /* currency */"USD",
   /* quantity */8
 ];
@@ -51,8 +51,8 @@ var cart2_000 = /* record */[
 var cart2_001 = /* :: */[
   /* record */[
     /* productId */"B4",
-    /* title */"Web UX",
-    /* unitPrice */12.00,
+    /* title */"The Silk Roads: A New History of the World",
+    /* unitPrice */13.59,
     /* currency */"USD",
     /* quantity */3
   ],

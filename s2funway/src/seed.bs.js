@@ -5,28 +5,37 @@
 var Seed = /* module */[/* cartItems : :: */[
     /* record */[
       /* productId */"Book-1",
-      /* title */"Learning Reason ML",
-      /* unitPrice */20.00,
+      /* title */"The Silk Roads: A New History of the World",
+      /* unitPrice */13.59,
       /* currency */"USD",
       /* quantity */5
     ],
     /* :: */[
       /* record */[
         /* productId */"Book-2",
-        /* title */"Learning React",
-        /* unitPrice */35.00,
+        /* title */"Measure What Matters",
+        /* unitPrice */14.99,
         /* currency */"USD",
         /* quantity */4
       ],
       /* :: */[
         /* record */[
           /* productId */"Book-3",
-          /* title */"React Quickly",
-          /* unitPrice */47.00,
+          /* title */"The Book of Why: The New Science of Cause and Effect",
+          /* unitPrice */21.75,
           /* currency */"USD",
           /* quantity */3
         ],
-        /* [] */0
+        /* :: */[
+          /* record */[
+            /* productId */"Book-4",
+            /* title */"My Name Is Red",
+            /* unitPrice */24.74,
+            /* currency */"USD",
+            /* quantity */3
+          ],
+          /* [] */0
+        ]
       ]
     ]
   ]];
