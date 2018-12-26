@@ -2,45 +2,19 @@
 'use strict';
 
 var List = require("bs-platform/lib/js/list.js");
-var Seed$S2funway = require("./seed.bs.js");
-var Caml_builtin_exceptions = require("bs-platform/lib/js/caml_builtin_exceptions.js");
+var Seed$S2funway = require("./Seed.bs.js");
 
-function getItemById(itemId) {
-  var exit = 0;
-  var item;
-  try {
-    item = List.find((function (i) {
-            return i[/* productId */0] === itemId;
-          }), Seed$S2funway.Seed[/* cartItems */0]);
-    exit = 1;
-  }
-  catch (exn){
-    if (exn === Caml_builtin_exceptions.not_found) {
-      return undefined;
-    } else {
-      throw exn;
-    }
-  }
-  if (exit === 1) {
-    return item;
-  }
-  
-}
+var productNames = List.map((function (i) {
+        return i[/* title */1];
+      }), Seed$S2funway.Seed[/* cartItems */0]);
 
-function handleItem(item) {
-  if (item !== undefined) {
-    console.log(item[/* title */1] + " found in the cart");
-    return /* () */0;
-  } else {
-    console.log("Item not found");
-    return /* () */0;
-  }
-}
+List.iter((function (pn) {
+        console.log(pn);
+        return /* () */0;
+      }), productNames);
 
-handleItem(getItemById("Book-1"));
+var Seed = Seed$S2funway.Seed;
 
-handleItem(getItemById("Book-21"));
-
-exports.getItemById = getItemById;
-exports.handleItem = handleItem;
-/*  Not a pure module */
+exports.Seed = Seed;
+exports.productNames = productNames;
+/* productNames Not a pure module */

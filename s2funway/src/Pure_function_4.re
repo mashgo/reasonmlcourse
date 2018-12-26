@@ -1,18 +1,8 @@
-open Seed;
+include Seed;
 
-let getItemById = (itemId) => {
-    switch(List.find((i : Seed.item) => i.productId == itemId, Seed.cartItems)) {
-    | item => Some(item)
-    | exception Not_found => None
-    };
-};
+/* Type inference not working as expected */
+/* let productNames = List.map(i => i.title, cartItems); */
 
-let handleItem = (item) => {
-    switch item {
-    | Some(v: Seed.item) => Js.log(v.title ++ " found in the cart")
-    | None => Js.log("Item not found")
-    };
-};
+let productNames = List.map((i : Seed.item) => i.title, Seed.cartItems);
 
-"Book-1" |> getItemById |> handleItem;
-"Book-21" |> getItemById |> handleItem;
+List.iter(pn => Js.log(pn), productNames);

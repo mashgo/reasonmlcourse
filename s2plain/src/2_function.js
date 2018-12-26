@@ -38,12 +38,13 @@ cart.addItem_notpure({
 });
 console.log(cart.totalPrice);
 
-cart.addItem({
-    "ProductId" : "Book-5",
-    "Title" : "Web Principles",
-    "UnitPrice": 18.00,
+const cart2 = new Cart();
+cart2.addItem({
+    "ProductId" : "Book-4",
+    "Title" : "Web UX",
+    "UnitPrice": 12.00,
     "Currency": "USD",
-    "Quantity": 8
+    "Quantity": 3
 });
 
-console.log(cart.getTotalPrice());
+console.log(cart2.getTotalPrice());

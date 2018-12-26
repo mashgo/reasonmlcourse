@@ -2,20 +2,12 @@
 
 var _seed = require('./seed');
 
-var getItemById = function getItemById(itemId) {
-    var item = _seed.CartItems.filter(function (i) {
-        return i.ProductId == itemId;
-    });
-    return item[0];
-};
+var productNames = _seed.CartItems.map(function (item) {
+    return item.Title;
+});
 
-var handleItem = function handleItem(item) {
-    if (item != null) {
-        console.log(item.Title + ' is in the cart');
-    } else {
-        console.log('Item not found');
-    }
-};
+console.log(productNames);
 
-handleItem(getItemById('Book-1'));
-handleItem(getItemById('Book-19'));
+for (var i = 0; i < productNames.length; i++) {
+    console.log(productNames[i]);
+}

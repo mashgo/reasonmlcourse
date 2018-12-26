@@ -1,17 +1,10 @@
 import {CartItems} from './seed';
 
-const getItemById = (itemId) => {
-    let item = CartItems.filter(i => i.ProductId == itemId);
-    return item[0];
-}
+const productNames = CartItems.map(item => item.Title);
 
-const handleItem = (item) => {
-    if(item != null) {
-        console.log(item.Title + ' is in the cart');
-    }else {
-        console.log('Item not found');
-    }
-}
+console.log(productNames);
 
-handleItem(getItemById('Book-1'));
-handleItem(getItemById('Book-19'));
+for(let i = 0; i < productNames.length; i++)
+{
+    console.log(productNames[i]);
+}

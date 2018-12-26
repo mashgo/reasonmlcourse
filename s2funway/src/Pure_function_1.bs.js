@@ -10,19 +10,6 @@ function addItem(cart, item) {
         ];
 }
 
-function updateItem(cart, productId, quantity) {
-  var item = List.find((function (i) {
-          return i[/* productId */0] === productId;
-        }), cart);
-  return /* record */[
-          /* productId */item[/* productId */0],
-          /* title */item[/* title */1],
-          /* unitPrice */item[/* unitPrice */2],
-          /* currency */item[/* currency */3],
-          /* quantity */quantity
-        ];
-}
-
 function calculateDiscount(cart, counterDiscount) {
   var folder = function (acc, item) {
     return acc + item[/* unitPrice */2] * item[/* quantity */4];
@@ -81,14 +68,8 @@ console.log(calculateDiscount(cart, 0.05));
 
 console.log(calculateDiscount(cart2, 0.05));
 
-var updatedItem = updateItem(cart, "B4", 6);
-
-console.log(updatedItem[/* title */1] + (". Updated Quantity: " + String(updatedItem[/* quantity */4])));
-
 exports.addItem = addItem;
-exports.updateItem = updateItem;
 exports.calculateDiscount = calculateDiscount;
 exports.cart = cart;
 exports.cart2 = cart2;
-exports.updatedItem = updatedItem;
 /*  Not a pure module */

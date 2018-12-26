@@ -23,37 +23,7 @@ function updateItem(cart, productId, quantity) {
         ];
 }
 
-function calculateDiscount(cart, counterDiscount) {
-  var folder = function (acc, item) {
-    return acc + item[/* unitPrice */2] * item[/* quantity */4];
-  };
-  var totalPrice = List.fold_left(folder, 0, cart);
-  var match = List.length(cart) >= 2 && totalPrice >= 100;
-  var discount = match ? 0.1 : 1;
-  return totalPrice - totalPrice * (discount + counterDiscount);
-}
-
-var cart = /* :: */[
-  /* record */[
-    /* productId */"B4",
-    /* title */"Web UX",
-    /* unitPrice */12.00,
-    /* currency */"USD",
-    /* quantity */3
-  ],
-  /* :: */[
-    /* record */[
-      /* productId */"B5",
-      /* title */"Web Principles",
-      /* unitPrice */18.00,
-      /* currency */"USD",
-      /* quantity */8
-    ],
-    /* [] */0
-  ]
-];
-
-var cart2_000 = /* record */[
+var cart_000 = /* record */[
   /* productId */"B5",
   /* title */"Web Principles",
   /* unitPrice */18.00,
@@ -61,7 +31,7 @@ var cart2_000 = /* record */[
   /* quantity */8
 ];
 
-var cart2_001 = /* :: */[
+var cart_001 = /* :: */[
   /* record */[
     /* productId */"B4",
     /* title */"Web UX",
@@ -72,14 +42,10 @@ var cart2_001 = /* :: */[
   /* [] */0
 ];
 
-var cart2 = /* :: */[
-  cart2_000,
-  cart2_001
+var cart = /* :: */[
+  cart_000,
+  cart_001
 ];
-
-console.log(calculateDiscount(cart, 0.05));
-
-console.log(calculateDiscount(cart2, 0.05));
 
 var updatedItem = updateItem(cart, "B4", 6);
 
@@ -87,8 +53,6 @@ console.log(updatedItem[/* title */1] + (". Updated Quantity: " + String(updated
 
 exports.addItem = addItem;
 exports.updateItem = updateItem;
-exports.calculateDiscount = calculateDiscount;
 exports.cart = cart;
-exports.cart2 = cart2;
 exports.updatedItem = updatedItem;
-/*  Not a pure module */
+/* updatedItem Not a pure module */

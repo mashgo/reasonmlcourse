@@ -22,7 +22,7 @@ class Discount {
             discount = 0.1;
         }
 
-        // assume that PoS person can give additional 5% based on customer
+        // assume that PoS person can give additional 5% based on customer loyality
         // this is accessed directly from form input field
         const counterDiscount = 0.05; // 5%
         cart.netPrice = totalPrice - totalPrice * (discount + counterDiscount);
